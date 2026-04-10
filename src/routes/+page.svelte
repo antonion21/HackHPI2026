@@ -1,84 +1,16 @@
-<div class="phone-frame">
-    <!-- Status Bar -->
-    <div class="status-bar">
-        <span>9:41</span>
-        <div class="status-icons">
-            <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
-                ><path
-                    d="M8 0C5.2 0 2.6 1 0.6 2.8L0 3.4 8 12l8-8.6-.6-.6C13.4 1 10.8 0 8 0z"
-                    fill="#222"
-                /></svg
-            >
-            <svg width="18" height="12" viewBox="0 0 18 12" fill="none"
-                ><rect
-                    x="0"
-                    y="3"
-                    width="3"
-                    height="9"
-                    rx="1"
-                    fill="#222"
-                /><rect
-                    x="5"
-                    y="2"
-                    width="3"
-                    height="10"
-                    rx="1"
-                    fill="#222"
-                /><rect
-                    x="10"
-                    y="0"
-                    width="3"
-                    height="12"
-                    rx="1"
-                    fill="#222"
-                /><rect
-                    x="15"
-                    y="0"
-                    width="3"
-                    height="12"
-                    rx="1"
-                    fill="#222"
-                /></svg
-            >
-            <svg width="27" height="12" viewBox="0 0 27 12" fill="none"
-                ><rect
-                    x="0"
-                    y="1"
-                    width="22"
-                    height="10"
-                    rx="3"
-                    stroke="#222"
-                    stroke-width="1.5"
-                    fill="none"
-                /><rect
-                    x="2"
-                    y="3"
-                    width="16"
-                    height="6"
-                    rx="1.5"
-                    fill="#222"
-                /><rect
-                    x="23"
-                    y="4"
-                    width="3"
-                    height="4"
-                    rx="1"
-                    fill="#222"
-                /></svg
-            >
-        </div>
-    </div>
+<div class="w-402px h-874px bg-neutral-50">
 
     <!-- Profile -->
     <div class="profile">
+        <span class="profile-name">LocalLoop</span>
         <div class="avatar">PO</div>
-        <span class="profile-name">Peter Ollek</span>
     </div>
 
     <!-- Points -->
     <div class="points-section">
-        <div class="points-value">10230 Points</div>
-        <div class="euro-value">&euro;32,00 value</div>
+        <div class="points-value">360 TODO</div>
+        <div class="euro-value">~230kg Fleisch CO2</div>
+        <div>progress bar</div>
     </div>
 
     <!-- Upload -->
