@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { Html5Qrcode, type Html5QrcodeResult } from 'html5-qrcode';
+    import BusinessQRScanner from './BusinessQRScanner.svelte'
 
     interface TransactionData {
         action: string;
