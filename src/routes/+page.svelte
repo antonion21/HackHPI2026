@@ -1,2 +1,260 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<div class="phone-frame">
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <span>9:41</span>
+        <div class="status-icons">
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none"
+                ><path
+                    d="M8 0C5.2 0 2.6 1 0.6 2.8L0 3.4 8 12l8-8.6-.6-.6C13.4 1 10.8 0 8 0z"
+                    fill="#222"
+                /></svg
+            >
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="none"
+                ><rect
+                    x="0"
+                    y="3"
+                    width="3"
+                    height="9"
+                    rx="1"
+                    fill="#222"
+                /><rect
+                    x="5"
+                    y="2"
+                    width="3"
+                    height="10"
+                    rx="1"
+                    fill="#222"
+                /><rect
+                    x="10"
+                    y="0"
+                    width="3"
+                    height="12"
+                    rx="1"
+                    fill="#222"
+                /><rect
+                    x="15"
+                    y="0"
+                    width="3"
+                    height="12"
+                    rx="1"
+                    fill="#222"
+                /></svg
+            >
+            <svg width="27" height="12" viewBox="0 0 27 12" fill="none"
+                ><rect
+                    x="0"
+                    y="1"
+                    width="22"
+                    height="10"
+                    rx="3"
+                    stroke="#222"
+                    stroke-width="1.5"
+                    fill="none"
+                /><rect
+                    x="2"
+                    y="3"
+                    width="16"
+                    height="6"
+                    rx="1.5"
+                    fill="#222"
+                /><rect
+                    x="23"
+                    y="4"
+                    width="3"
+                    height="4"
+                    rx="1"
+                    fill="#222"
+                /></svg
+            >
+        </div>
+    </div>
+
+    <!-- Profile -->
+    <div class="profile">
+        <div class="avatar">PO</div>
+        <span class="profile-name">Peter Ollek</span>
+    </div>
+
+    <!-- Points -->
+    <div class="points-section">
+        <div class="points-value">10230 Points</div>
+        <div class="euro-value">&euro;32,00 value</div>
+    </div>
+
+    <!-- Upload -->
+    <div class="upload-section">
+        <button class="upload-btn">
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path
+                    d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"
+                />
+            </svg>
+            Upload Receipt
+        </button>
+    </div>
+
+    <!-- History -->
+    <div class="history-header">
+        <h2>History</h2>
+        <a class="view-all">View all</a>
+    </div>
+
+    <div class="history-list">
+        <!-- Earned -->
+        <div class="history-item">
+            <div class="history-icon earned">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                    <polyline points="17 6 23 6 23 12" />
+                </svg>
+            </div>
+            <div class="history-info">
+                <div class="history-title">Nextbike Ride</div>
+                <div class="history-date">19.09.2026</div>
+            </div>
+            <div class="history-points">
+                <div class="amount positive">+50 P</div>
+                <div class="status">Earned</div>
+            </div>
+        </div>
+
+        <!-- Spent -->
+        <div class="history-item">
+            <div class="history-icon spent">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />
+                    <polyline points="17 18 23 18 23 12" />
+                </svg>
+            </div>
+            <div class="history-info">
+                <div class="history-title">Local Bakery Discount</div>
+                <div class="history-date">10.09.2026</div>
+            </div>
+            <div class="history-points">
+                <div class="amount negative">-10 P</div>
+                <div class="status">Spent</div>
+            </div>
+        </div>
+
+        <!-- Pending -->
+        <div class="history-item">
+            <div class="history-icon pending">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                </svg>
+            </div>
+            <div class="history-info">
+                <div class="history-title">Local Bakery Discount</div>
+                <div class="history-date">01.09.2026</div>
+            </div>
+            <div class="history-points">
+                <div class="amount" style="color:#999">-10 P</div>
+                <div class="status">Pending</div>
+            </div>
+        </div>
+
+        <!-- Extra items for scroll -->
+        <div class="history-item">
+            <div class="history-icon earned">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                    <polyline points="17 6 23 6 23 12" />
+                </svg>
+            </div>
+            <div class="history-info">
+                <div class="history-title">Bus Ticket Upload</div>
+                <div class="history-date">28.08.2026</div>
+            </div>
+            <div class="history-points">
+                <div class="amount positive">+30 P</div>
+                <div class="status">Earned</div>
+            </div>
+        </div>
+
+        <div class="history-item">
+            <div class="history-icon earned">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                    <polyline points="17 6 23 6 23 12" />
+                </svg>
+            </div>
+            <div class="history-info">
+                <div class="history-title">E-Scooter Ride</div>
+                <div class="history-date">20.08.2026</div>
+            </div>
+            <div class="history-points">
+                <div class="amount positive">+40 P</div>
+                <div class="status">Earned</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="bottom-bar">
+        <button class="scan-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                    d="M3 11h2V9H3v2zm0-4h2V5H3v2zm4 4h2V9H7v2zm0-4h2V5H7v2zm-4 8h2v-2H3v2zm8-8h2V5h-2v2zm-4 8h2v-2H7v2zm4 0h2v-2h-2v2zm4-4h2V9h-2v2zm0-6v2h2V5h-2zm4 4h2V9h-2v2zm0-4h2V5h-2v2zm0 8h2v-2h-2v2zm-4 0h2v-2h-2v2zm-8 4h2v-2H7v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2z"
+                />
+            </svg>
+            Scan QR code
+        </button>
+        <button class="map-btn">
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                <line x1="8" y1="2" x2="8" y2="18" />
+                <line x1="16" y1="6" x2="16" y2="22" />
+            </svg>
+        </button>
+    </div>
+</div>
