@@ -6,15 +6,15 @@
   
     // Logic to determine state based on amount
     let isPending = $derived(data.amount === null || data.amount === undefined);
-    let isPositive = $derived(data.amount !== null && data.amount > 0);
-    let isNegative = $derived(data.amount !== null && data.amount < 0);
+    let isPositive = $derived(data.amount !== null && data.amount != undefined && data.amount > 0);
+    let isNegative = $derived(data.amount !== null && data.amount != undefined && data.amount < 0);
   
     // Dynamic formatting
     let displayAmount = $derived(isPending ? "" : `${isPositive ? '+' : ''}${data.amount} P`);
     let statusLabel = $derived(isPending ? "Pending" : (isPositive ? "Earned" : "Spent"));
   </script>
   
-  <div class="flex items-center justify-between w-full max-w-md p-4 mb-3 bg-gray-50/50 rounded-[2rem] border border-gray-100 shadow-sm">
+  <div class="flex items-center justify-between w-full max-w-md p-4 mb-3 bg-gray-200/50 rounded-[1.5rem]">
     <div class="flex items-center space-x-4">
       <div class="flex h-12 w-12 items-center justify-center rounded-full 
         {isPending ? 'bg-gray-200' : ''} 

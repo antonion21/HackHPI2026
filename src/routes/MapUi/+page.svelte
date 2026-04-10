@@ -196,7 +196,6 @@
   .page {
     max-width: 720px;
     margin: 0 auto;
-    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;

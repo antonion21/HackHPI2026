@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import BusinessQRScanner from './BusinessQRScanner.svelte';
+	// import BusinessQRScanner from './BusinessQRScanner.svelte';
 
 	let { children } = $props();
 </script>
