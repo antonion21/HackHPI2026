@@ -1,3 +1,7 @@
+<script>
+    import HistoryCard from "$lib/HistoryCard.svelte";
+</script>
+
 <!-- Profile -->
 <div class="flex-row text-center">
     <span class="profile-name">LocalLoop</span>
@@ -17,143 +21,34 @@
         bg-emerald-500 hover:bg-emerald-700 text-white
         font-bold py-2 px-4 rounded-full"
 >
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0-3-3m3 3 3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0-3-3m3 3 3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z"
+        />
     </svg>
-      
+
     <span>Upload Receipt</span>
 </button>
 
 <!-- History -->
-<div class="history-header">
+<div class="flex flex-row">
     <h2>History</h2>
     <a class="view-all">View all</a>
 </div>
 
-<div class="history-list">
-    <!-- Earned -->
-    <div class="history-item">
-        <div class="history-icon earned">
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                <polyline points="17 6 23 6 23 12" />
-            </svg>
-        </div>
-        <div class="history-info">
-            <div class="history-title">Nextbike Ride</div>
-            <div class="history-date">19.09.2026</div>
-        </div>
-        <div class="history-points">
-            <div class="amount positive">+50 P</div>
-            <div class="status">Earned</div>
-        </div>
-    </div>
-
-    <!-- Spent -->
-    <div class="history-item">
-        <div class="history-icon spent">
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />
-                <polyline points="17 18 23 18 23 12" />
-            </svg>
-        </div>
-        <div class="history-info">
-            <div class="history-title">Local Bakery Discount</div>
-            <div class="history-date">10.09.2026</div>
-        </div>
-        <div class="history-points">
-            <div class="amount negative">-10 P</div>
-            <div class="status">Spent</div>
-        </div>
-    </div>
-
-    <!-- Pending -->
-    <div class="history-item">
-        <div class="history-icon pending">
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-            </svg>
-        </div>
-        <div class="history-info">
-            <div class="history-title">Local Bakery Discount</div>
-            <div class="history-date">01.09.2026</div>
-        </div>
-        <div class="history-points">
-            <div class="amount" style="color:#999">-10 P</div>
-            <div class="status">Pending</div>
-        </div>
-    </div>
-
-    <!-- Extra items for scroll -->
-    <div class="history-item">
-        <div class="history-icon earned">
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                <polyline points="17 6 23 6 23 12" />
-            </svg>
-        </div>
-        <div class="history-info">
-            <div class="history-title">Bus Ticket Upload</div>
-            <div class="history-date">28.08.2026</div>
-        </div>
-        <div class="history-points">
-            <div class="amount positive">+30 P</div>
-            <div class="status">Earned</div>
-        </div>
-    </div>
-
-    <div class="history-item">
-        <div class="history-icon earned">
-            <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                <polyline points="17 6 23 6 23 12" />
-            </svg>
-        </div>
-        <div class="history-info">
-            <div class="history-title">E-Scooter Ride</div>
-            <div class="history-date">20.08.2026</div>
-        </div>
-        <div class="history-points">
-            <div class="amount positive">+40 P</div>
-            <div class="status">Earned</div>
-        </div>
-    </div>
+<div class="flex flex-col">
+    <HistoryCard amount={42} name="Nextbike Ride" date="19.09.2025" />
+    <HistoryCard amount={null} name="Local Bakery" date="" />
+    <HistoryCard amount={null} name="Local Bakery" date="" />
 </div>
 
 <!-- Bottom Bar -->
