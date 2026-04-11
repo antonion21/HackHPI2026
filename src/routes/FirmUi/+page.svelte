@@ -1,6 +1,5 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { Html5Qrcode, type Html5QrcodeResult } from 'html5-qrcode';
     // import BusinessQRScanner from './BusinessQRScanner.svelte'
 
     interface TransactionData {
@@ -10,7 +9,6 @@
         points: number;
     }
 
-    let html5QrCode: Html5Qrcode | null = null;
     let lastScannedCode: string | null = null;
     let scanTimeout: ReturnType<typeof setTimeout> | null = null;
     let transactionData: TransactionData | null = null;
@@ -26,7 +24,7 @@
         'CO₂-Kompensation'
     ] as const;
 
-    function onScanSuccess(decodedText: string, decodedResult: Html5QrcodeResult): void {
+    function onScanSuccess(decodedText: string): void {
         // Prevent duplicate scans
         if (decodedText === lastScannedCode) {
             return;
@@ -40,7 +38,7 @@
         lastScannedCode = decodedText;
         
         // Simulate transaction processing
-        processTransaction(decodedText);
+        processTransaction();
         
         // Reset after 3 seconds to allow next scan
         scanTimeout = setTimeout((): void => {
@@ -48,7 +46,7 @@
         }, 3000);
     }
 
-    function processTransaction(qrCode: string): void {
+    function processTransaction(): void {
         // Generate mock transaction data
         const points: number = Math.floor(Math.random() * 100) + 10;
         const action: string = ACTIONS[Math.floor(Math.random() * ACTIONS.length)];
@@ -84,12 +82,9 @@
         }
     }
 
-    function onScanFailure(error: string): void {
-        // Handle scan failure silently
-    }
+
 
     onMount((): (() => void) => {
-        html5QrCode = new Html5Qrcode("reader");
         
         const config: {
             fps: number;
@@ -100,24 +95,6 @@
             qrbox: { width: 250, height: 250 },
             aspectRatio: 1.0
         };
-        
-        // Start scanning
-        html5QrCode.start(
-            { facingMode: "environment" },
-            config,
-            onScanSuccess,
-            onScanFailure
-        ).catch((err: Error): void => {
-            console.error("Error starting camera:", err);
-            cameraError = true;
-        });
-
-        return (): void => {
-            if (html5QrCode) {
-                html5QrCode.stop().catch((err: Error): void => console.error(err));
-            }
-        };
-    });
 </script>
 
 <svelte:head>
@@ -125,17 +102,17 @@
     <script src="https://unpkg.com/html5-qrcode"></script>
 </svelte:head>
 
-<div class="min-h-screen bg-gray-50">
+<div class="min-h-screen bg-white">
     <!-- Header -->
     <div class="bg-white shadow-sm relative z-10">
         <div class="px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-linear-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: #079669;">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                     </svg>
                 </div>
-                <span class="font-semibold text-lg text-gray-800">Business Portal</span>
+                <span class="font-bold text-xl text-gray-900">Business Portal</span>
             </div>
             <button class="p-2" type="button" aria-label="Menu öffnen">
                 <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,10 +126,6 @@
     <div class="relative scanner-container">
         <div id="reader" class="w-full h-full"></div>
         <div class="scanner-overlay pointer-events-none">
-            <div class="corner top-left"></div>
-            <div class="corner top-right"></div>
-            <div class="corner bottom-left"></div>
-            <div class="corner bottom-right"></div>
             <div class="scan-line"></div>
         </div>
         
@@ -167,7 +140,7 @@
     <!-- Transaction Summary -->
     <div class="bg-white px-4 py-6 shadow-lg">
         <div class="mb-4">
-            <h2 class="text-gray-500 text-sm font-medium mb-2">Letzte Transaktion</h2>
+            <h2 class="text-gray-800 text-lg font-bold mb-2">Letzte Transaktion</h2>
             <div id="transactionDisplay" class:success-animation={transactionData !== null}>
                 {#if cameraError}
                     <div class="text-center text-red-600 py-8">
@@ -175,28 +148,28 @@
                         <p class="text-xs text-gray-500">Bitte erlauben Sie den Kamerazugriff</p>
                     </div>
                 {:else if transactionData}
-                    <div class="bg-emerald-50 rounded-2xl p-6">
+                    <div class="bg-gray-50 rounded-2xl p-6">
                         <div class="flex items-center justify-center mb-4">
-                            <div class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background: #079669;">
                                 <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </div>
                         </div>
-                        <h3 class="text-emerald-900 font-bold text-xl mb-1">{transactionData.action}</h3>
-                        <p class="text-emerald-700 text-sm mb-4">{transactionData.date} · {transactionData.time}</p>
+                        <h3 class="text-gray-900 font-bold text-2xl mb-1">{transactionData.action}</h3>
+                        <p class="text-gray-500 text-sm mb-4">{transactionData.date} · {transactionData.time}</p>
                         <div class="flex items-baseline justify-center gap-2 mb-3">
-                            <span class="text-emerald-600 text-4xl font-bold">+{transactionData.points}</span>
-                            <span class="text-emerald-600 text-xl font-semibold">P</span>
+                            <span class="text-5xl font-bold" style="color: #079669;">+{transactionData.points}</span>
+                            <span class="text-xl font-semibold" style="color: #079669;">P</span>
                         </div>
-                        <p class="text-emerald-800 text-xs font-medium">Punkte gutgeschrieben</p>
+                        <p class="text-gray-500 text-xs font-medium">Punkte gutgeschrieben</p>
                     </div>
                 {:else}
-                    <div class="text-center py-8 text-gray-400">
-                        <svg class="w-16 h-16 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="text-center py-8 text-gray-300">
+                        <svg class="w-16 h-16 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>
                         </svg>
-                        <p class="text-sm">Scannen Sie einen Kunden-QR-Code</p>
+                        <p class="text-sm text-gray-400">Scannen Sie einen Kunden-QR-Code</p>
                     </div>
                 {/if}
             </div>
@@ -204,13 +177,13 @@
 
         <!-- Transaction Stats -->
         <div class="grid grid-cols-2 gap-3">
-            <div class="bg-emerald-50 rounded-xl p-4">
-                <p class="text-emerald-600 text-xs font-medium mb-1">Heute gescannt</p>
-                <p class="text-emerald-800 text-2xl font-bold">{todayScans}</p>
+            <div class="bg-gray-100 rounded-2xl p-4">
+                <p class="text-gray-500 text-xs font-semibold uppercase tracking-wide mb-1">Heute gescannt</p>
+                <p class="text-gray-900 text-2xl font-bold">{todayScans}</p>
             </div>
-            <div class="bg-gray-100 rounded-xl p-4">
-                <p class="text-gray-600 text-xs font-medium mb-1">Punkte vergeben</p>
-                <p class="text-gray-800 text-2xl font-bold">{totalPoints.toLocaleString('de-DE')}</p>
+            <div class="bg-gray-100 rounded-2xl p-4">
+                <p class="text-gray-500 text-xs font-semibold uppercase tracking-wide mb-1">Punkte vergeben</p>
+                <p class="text-gray-900 text-2xl font-bold">{totalPoints.toLocaleString('de-DE')}</p>
             </div>
         </div>
     </div>
@@ -223,7 +196,7 @@
     }
     
     .scanner-container {
-        height: calc(100vh - 64px - 280px);
+        height: calc(100vh - 64px - 480px);
     }
     
     :global(#reader) {
@@ -244,16 +217,16 @@
         transform: translate(-50%, -50%);
         width: 250px;
         height: 250px;
-        border: 3px solid #10B981;
+        border: 3px solid #079669;
         border-radius: 24px;
-        box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+
     }
     
     .corner {
         position: absolute;
         width: 30px;
         height: 30px;
-        border: 4px solid #10B981;
+        border: 4px solid #079669;
     }
     
     .corner.top-left {
@@ -292,7 +265,7 @@
         position: absolute;
         width: 100%;
         height: 2px;
-        background: linear-gradient(90deg, transparent, #10B981, transparent);
+        background: linear-gradient(90deg, transparent, #079669, transparent);
         animation: scan 2s ease-in-out infinite;
     }
     

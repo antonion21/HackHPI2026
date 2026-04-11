@@ -193,159 +193,6 @@
 </script>
 
 <style>
-  .page {
-    max-width: 720px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    min-height: 100vh;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    color: #111827;
-    background: #f5f7fb;
-  }
-
-  .card {
-    background: #fff;
-    border-radius: 24px;
-    box-shadow: 0 24px 56px rgba(15, 23, 42, 0.08);
-    padding: 1rem;
-  }
-
-  .map-card {
-    border: 3px solid #2f80ed;
-    padding: 0.75rem;
-  }
-
-  .map-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.75rem;
-  }
-
-  .map-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin: 0;
-  }
-
-  .close-button {
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    background: #f2f4f7;
-    color: #334155;
-    font-size: 1.3rem;
-    line-height: 1;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-  }
-
-  .map-frame {
-    overflow: hidden;
-    border-radius: 28px;
-    min-height: 300px;
-    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.04);
-  }
-
-  .map-container {
-    width: 100%;
-    height: 320px;
-  }
-
-  .map-card {
-    border: none;
-    padding: 1rem;
-    background: #ffffff;
-    border-radius: 32px;
-    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
-  }
-
-  .map-header {
-    display: grid;
-    grid-template-columns: 40px 1fr 40px;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-
-  .map-title {
-    font-size: 1.35rem;
-    font-weight: 700;
-    text-align: center;
-    margin: 0;
-  }
-
-  .header-spacer {
-    width: 40px;
-    height: 40px;
-  }
-
-  .error-banner {
-    margin: 0 0 0.75rem;
-    padding: 0.85rem 1rem;
-    border-radius: 18px;
-    background: #fef3f2;
-    color: #b91c1c;
-    font-size: 0.95rem;
-    border: 1px solid #fecaca;
-  }
-
-  .map-container {
-    width: 100%;
-    height: 360px;
-  }
-
-  .nearby-card {
-    padding: 1.25rem;
-    background: #ffffff;
-    border-radius: 32px;
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.06);
-  }
-
-  .nearby-title {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 1rem;
-  }
-
-  .place-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .place-item {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    padding: 0.85rem;
-    border-radius: 24px;
-    background: #f8fafc;
-    border: 1px solid rgba(15, 23, 42, 0.06);
-  }
-
-  .place-avatar {
-    width: 62px;
-    height: 62px;
-    border-radius: 20px;
-    overflow: hidden;
-    display: block;
-    flex-shrink: 0;
-    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
-  }
-
-  .place-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
   :global(.custom-shop-marker-wrapper) {
     display: block;
   }
@@ -371,64 +218,48 @@
     width: 100%;
     height: 100%;
   }
-
-  .place-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .place-distance {
-    font-size: 0.95rem;
-    color: #667085;
-  }
-
-  .place-title {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #111827;
-  }
-
-  .place-subtitle {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #667085;
-  }
 </style>
 
-<div class="page">
-  <div class="card map-card">
-    <div class="map-header">
-      <button class="close-button" aria-label="Close map">×</button>
-      <h1 class="map-title">Map</h1>
-      <div class="header-spacer"></div>
+<div class="flex min-h-screen items-center justify-center bg-[#f4f6f8] overflow-hidden">
+  <div class="flex flex-col" style="width:402px; height:874px; overflow:hidden;">
+    <div class="flex h-full w-full flex-col">
+      <div class="mt-12 flex-1 overflow-hidden rounded-t-3xl bg-white shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+        <div class="h-full px-4 py-6 sm:px-6 md:px-8">
+          <div class="grid grid-cols-[40px_1fr_40px] items-center gap-4 border-b border-[#d8dee6] px-0 py-4">
+        <button class="grid h-10 w-10 place-items-center rounded-full bg-[#eef2f7] text-slate-700 shadow-sm" aria-label="Close map">×</button>
+        <h1 class="text-center text-lg font-semibold text-slate-900">Map</h1>
+        <div class="h-10 w-10"></div>
+      </div>
+
+      {#if errorMessage}
+        <div class="mt-4 rounded-3xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {errorMessage}
+        </div>
+      {/if}
+
+      <div class="mt-4 overflow-hidden rounded-[28px] border border-[#dde4ec] bg-[#f8fafc] shadow-inner">
+        <div bind:this={mapContainer} class="h-72 w-full sm:h-80"></div>
+      </div>
+
+      <div class="mt-6 pb-6 pt-5">
+        <h2 class="text-2xl font-semibold text-slate-900">Near you</h2>
+        <div class="mt-4 space-y-4">
+          {#each places as place (place.title)}
+            <article class="flex items-center gap-4 rounded-3xl bg-[#f7f8fb] border border-[#e2e8f0] p-4 shadow-sm">
+              <div class="h-16 w-16 shrink-0 overflow-hidden rounded-2xl bg-slate-300 shadow-[0_12px_24px_rgba(15,23,42,0.08)]">
+                <img src={place.image} alt={place.title} loading="lazy" class="h-full w-full object-cover" />
+              </div>
+              <div class="min-w-0">
+                <p class="text-base font-semibold text-slate-900">{place.title}</p>
+                <p class="mt-1 text-sm text-slate-500">{place.subtitle}</p>
+                <p class="mt-1 text-sm text-slate-400">{place.distance}</p>
+              </div>
+            </article>
+          {/each}
+        </div>
+      </div>
     </div>
-
-    {#if errorMessage}
-      <div class="error-banner">{errorMessage}</div>
-    {/if}
-
-    <div class="map-frame">
-      <div bind:this={mapContainer} class="map-container"></div>
     </div>
-  </div>
-
-  <div class="card nearby-card">
-    <h2 class="nearby-title">Near you</h2>
-    <div class="place-list">
-      {#each places as place (place.title)}
-        <article class="place-item">
-          <div class="place-avatar">
-            <img src={place.image} alt={place.title} loading="lazy" />
-          </div>
-          <div class="place-text">
-            <p class="place-title">{place.title}</p>
-            <p class="place-subtitle">{place.subtitle}</p>
-            <p class="place-distance">{place.distance}</p>
-          </div>
-        </article>
-      {/each}
     </div>
   </div>
 </div>

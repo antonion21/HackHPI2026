@@ -14,7 +14,7 @@
     let statusLabel = $derived(isPending ? "Pending" : (isPositive ? "Earned" : "Spent"));
   </script>
   
-  <div class="flex items-center justify-between w-full max-w-md p-4 mb-3 bg-gray-200/50 rounded-[1.5rem]">
+  <div class="flex items-center justify-between w-full max-w-md p-4 mb-3 bg-neutral-200/50 rounded-[1.5rem]">
     <div class="flex items-center space-x-4">
       <div class="flex h-12 w-12 items-center justify-center rounded-full 
         {isPending ? 'bg-gray-200' : ''} 

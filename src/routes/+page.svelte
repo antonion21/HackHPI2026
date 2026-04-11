@@ -19,9 +19,9 @@
 </div>
 
 <div
-    class="bg-gray-50 rounded-[40px] p-10 flex flex-col items-center justify-center mb-8"
+    class="bg-gray-50 rounded-[50px] p-10 flex flex-col items-center justify-center"
 >
-    <div class="bg-white p-4 rounded-xl shadow-sm mb-4">
+    <div class="bg-white p-4 rounded-[1.5rem] shadow-lg">
         <svg
             class="w-32 h-32 text-black"
             viewBox="0 0 24 24"
@@ -37,7 +37,7 @@
     </div>
 </div>
 
-<div class="text-center mb-10">
+<div class="text-center">
     <h1 class="text-4xl font-bold text-[#009669] mb-1 tracking-tight">
         {user.points} Paws
     </h1>
@@ -60,4 +60,57 @@
     <HistoryCard amount={2} name="Nextbike Ride" date="19.09.2025" />
     <HistoryCard amount={-10} name="Local Bakery" date="10.09.2025" />
     <HistoryCard amount={undefined} name="Solar Panel" date="29.08.2025" />
+</div>
+
+<div class="flex flex-row-reverse items-center justify-between">
+    <!-- Map Button -->
+    <a
+        type="button"
+        class="flex h-14 w-14 items-center justify-center rounded-full bg-[#009669] text-white shadow-lg shadow-emerald-900/20 transition-transform active:scale-95"
+        aria-label="View Map"
+        href="/MapUi"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="h-7 w-7"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 6.75V15m6-6v8.25m.503 3.446 4.874-2.437c.381-.19.623-.579.623-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.269 3 6.696v10.758c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z"
+            />
+        </svg>
+    </a>
+
+    <!-- Upload Button -->
+    <a
+        type="button"
+        class="inline-flex items-center gap-2.5 px-6 py-3 bg-[#009367] text-white rounded-full transition-all shadow-lg shadow-emerald-900/20 duration-150 hover:bg-[#007d57] focus:outline-none focus:ring-2 focus:ring-[#009367]/50"
+        href="Upload"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="w-5 h-5 text-white"
+        >
+            <path
+                d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"
+            />
+            <path d="M12 12v9" />
+            <path d="m16 16-4-4-4 4" />
+        </svg>
+
+        <span class="text-base font-semibold tracking-wide">
+            Upload Receipttt
+        </span>
+    </a>
 </div>
