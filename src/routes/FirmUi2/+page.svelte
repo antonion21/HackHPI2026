@@ -74,7 +74,7 @@
     <!-- Business Hero -->
     <div class="px-4 py-6 border-b border-gray-100">
         <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0" style="background: #079669;">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0" style="background: #079669;">
                 <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                 </svg>
@@ -155,7 +155,7 @@
         <div>
             <h2 class="text-gray-800 text-lg font-bold mb-3">Angebotene Produkte</h2>
             <div class="flex flex-col gap-2">
-                {#each products as product}
+                {#each products as product (product.name)}
                     <div class="bg-gray-100 rounded-2xl p-4 flex items-center justify-between">
                         <div>
                             <p class="text-gray-900 text-sm font-semibold">{product.name}</p>
@@ -174,7 +174,7 @@
         <div class="pb-6">
             <h2 class="text-gray-800 text-lg font-bold mb-3">Öffnungszeiten</h2>
             <div class="bg-gray-100 rounded-2xl overflow-hidden">
-                {#each openingHours as hours, i}
+                {#each openingHours as hours, i (hours.day)}
                     <div class="px-4 py-3 flex items-center justify-between {i === dayIndex ? 'bg-white' : ''} {i < openingHours.length - 1 ? 'border-b border-gray-200' : ''}">
                         <div class="flex items-center gap-2">
                             {#if i === dayIndex}

@@ -24,77 +24,11 @@
         'CO₂-Kompensation'
     ] as const;
 
-    function onScanSuccess(decodedText: string): void {
-        // Prevent duplicate scans
-        if (decodedText === lastScannedCode) {
-            return;
-        }
-        
-        // Clear any existing timeout
-        if (scanTimeout) {
-            clearTimeout(scanTimeout);
-        }
-        
-        lastScannedCode = decodedText;
-        
-        // Simulate transaction processing
-        processTransaction();
-        
-        // Reset after 3 seconds to allow next scan
-        scanTimeout = setTimeout((): void => {
-            lastScannedCode = null;
-        }, 3000);
-    }
-
-    function processTransaction(): void {
-        // Generate mock transaction data
-        const points: number = Math.floor(Math.random() * 100) + 10;
-        const action: string = ACTIONS[Math.floor(Math.random() * ACTIONS.length)];
-        
-        const now: Date = new Date();
-        const dateStr: string = now.toLocaleDateString('de-DE', { 
-            day: '2-digit', 
-            month: '2-digit', 
-            year: 'numeric' 
-        });
-        const timeStr: string = now.toLocaleTimeString('de-DE', { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-        });
-        
-        transactionData = {
-            action,
-            date: dateStr,
-            time: timeStr,
-            points
-        };
-
-        // Update stats
-        todayScans += 1;
-        totalPoints += points;
-        
-        // Play success sound (if available)
-        try {
-            const audio: HTMLAudioElement = new Audio('data:audio/wav;base64,UklGRhwAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=');
-            audio.play().catch((): void => {});
-        } catch (e: unknown) {
-            // Sound playback failed, ignore
-        }
-    }
 
 
 
-    onMount((): (() => void) => {
-        
-        const config: {
-            fps: number;
-            qrbox: { width: number; height: number };
-            aspectRatio: number;
-        } = {
-            fps: 10,
-            qrbox: { width: 250, height: 250 },
-            aspectRatio: 1.0
-        };
+
+
 </script>
 
 <svelte:head>

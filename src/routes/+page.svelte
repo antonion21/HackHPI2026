@@ -1,12 +1,8 @@
 <script>
+    import { cardData, userData } from "$lib/store.svelte";
     import HistoryCard from "$lib/HistoryCard.svelte";
-
-    let user = {
-        name: "Jona Ollek",
-        avatar: "https://thispersondoesnotexist.com/",
-        points: 130,
-        value: "30",
-    };
+    let user = userData;
+    let cardD = cardData;
 </script>
 
 <div class="flex items-center gap-3 mb-8">
@@ -57,9 +53,9 @@
 <div class="mb-2"></div>
 
 <div class="flex flex-col">
-    <HistoryCard amount={2} name="Nextbike Ride" date="19.09.2025" />
-    <HistoryCard amount={-10} name="Local Bakery" date="10.09.2025" />
-    <HistoryCard amount={undefined} name="Solar Panel" date="29.08.2025" />
+    {#each cardD.cards.slice(0, 3) as card}
+        <HistoryCard amount={card.amount} name={card.name} date={card.name} />
+    {/each}
 </div>
 
 <div class="flex flex-row-reverse items-center justify-between">
@@ -90,7 +86,7 @@
     <a
         type="button"
         class="inline-flex items-center gap-2.5 px-6 py-3 bg-[#009367] text-white rounded-full transition-all shadow-lg shadow-emerald-900/20 duration-150 hover:bg-[#007d57] focus:outline-none focus:ring-2 focus:ring-[#009367]/50"
-        href="Upload"
+        href="/upload"
     >
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +106,7 @@
         </svg>
 
         <span class="text-base font-semibold tracking-wide">
-            Upload Receipttt
+            Upload Receipt
         </span>
     </a>
 </div>
